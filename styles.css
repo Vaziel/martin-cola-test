@@ -573,7 +573,14 @@ p.long { color: var(--ink-2); }
     margin: 24px auto 32px;
     order: 3;
   }
-  .hero__medal-cap { font-size: 11px; max-width: 240px; }
+  /* Подпись под медалью — без декоративной линии слева, чтобы текст был
+     визуально по центру относительно круглой медали */
+  .hero__medal-cap {
+    font-size: 11px;
+    max-width: 240px;
+    justify-content: center;
+  }
+  .hero__medal-cap .line { display: none; }
   @keyframes medal-float { 0%,100% { transform: translateY(0); } }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1029,8 +1036,19 @@ p.long { color: var(--ink-2); }
      SVG в .well__diagram имеет intrinsic ~450px и раздувал колонку → текст h2 тоже растягивался.
      min-width: 0 разрешает сжатие до 1fr-трека. */
   .well__grid > * { min-width: 0; }
-  .well__diagram { position: relative; top: 0; height: 76vh; max-height: 620px; }
+  /* Диаграмма sticky и компактнее — чтобы scroll-анимация (капля + бутылка) играла,
+     пока пользователь читает текст ниже */
+  .well__diagram {
+    position: sticky;
+    top: 80px;
+    height: 54vh;
+    max-height: 480px;
+  }
   .well__diagram svg { max-width: 100%; height: auto; }
+  /* «240м» и «Глубина скважины…» — в столбик, текст под цифрой */
+  .well__numwrap { grid-template-columns: 1fr; gap: 8px; }
+  .well__num { font-size: clamp(120px, 38vw, 180px); }
+  .well__numlabel { padding-bottom: 0; }
   .well__passport-grid { grid-template-columns: 1fr; }
 }
 
@@ -1140,6 +1158,13 @@ p.long { color: var(--ink-2); }
   .process__sticky { position: relative; top: 0; }
   .process__step:nth-child(2),
   .process__step:nth-child(4) { padding-left: 0; }
+  /* На мобильном photo-caption ("этап 01 · устье") дублирует .step-no и
+     наезжает на SVG-лейбл "0 м · поверхность" — скрываем */
+  .process__step .photo .ph-caption-tl { display: none; }
+  /* Caption в одну колонку (step-no сверху, h3+p ниже) — иначе h3 жмётся в узкий 1fr */
+  .process__caption { grid-template-columns: 1fr; gap: 12px; }
+  /* Чтобы текст не наезжал на photo при коротких viewport'ах */
+  .process__step { min-height: auto; padding: 32px 0; }
 }
 
 /* =========================================================================
