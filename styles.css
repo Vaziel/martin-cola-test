@@ -678,16 +678,17 @@ p.long { color: var(--ink-2); }
 .hstep__num {
   font-family: var(--serif);
   font-weight: 560;
-  font-size: clamp(120px, 18vw, 320px);
-  line-height: .78;
-  letter-spacing: -.045em;
+  font-size: clamp(110px, 14vw, 240px);
+  line-height: .82;
+  letter-spacing: -.04em;
   color: var(--paper);
   justify-self: end;
   font-feature-settings: "lnum", "tnum";
-  overflow: hidden;
+  overflow: visible;
   max-width: 100%;
+  text-align: right;
 }
-.hstep__num-i { white-space: nowrap; }
+.hstep__num-i { white-space: nowrap; display: inline-block; }
 .hstep__num-i {
   display: inline-block;
   will-change: transform;
