@@ -845,13 +845,13 @@
       <article class="format-card format-card--pet reveal" id="pet-card"
                data-vols='{"0.5":{"label":"0,5","tagline":"Розница и импульсный спрос. Магазины у дома, АЗС, кафе навынос.","pack":"12 бут. / упак.","pallet":"1 296 шт · 752 кг","channel":"Розница","scale":0.62},"1":{"label":"1","tagline":"Семейный формат. Сетевая розница, оптовые базы, заказы с доставкой.","pack":"9 бут. / упак.","pallet":"675 шт · 758 кг","channel":"Опт · розница","scale":0.78},"1.5":{"label":"1,5","tagline":"Домашний запас. Сетевая розница, доставка на дом.","pack":"6 бут. / упак.","pallet":"≈ 450 шт · ≈ 745 кг","channel":"Розница · опт","scale":0.90},"2":{"label":"2","tagline":"Большой объём. Гипермаркеты, оптовые базы, кейтеринг.","pack":"6 бут. / упак.","pallet":"≈ 336 шт · ≈ 735 кг","channel":"Опт · супермаркеты","scale":1.00}}'>
         <div class="format-card__tabs" role="tablist" aria-label="Объём ПЭТ-бутылки">
-          <button type="button" class="format-tab" data-vol="0.5" role="tab" aria-selected="false">0,5&nbsp;л</button>
-          <button type="button" class="format-tab" data-vol="1" role="tab" aria-selected="false">1&nbsp;л</button>
-          <button type="button" class="format-tab" data-vol="1.5" role="tab" aria-selected="false">1,5&nbsp;л</button>
-          <button type="button" class="format-tab is-active" data-vol="2" role="tab" aria-selected="true">2&nbsp;л</button>
+          <button type="button" class="format-tab" data-vol="0.5" role="tab" id="pet-tab-05"  aria-selected="false" aria-controls="pet-panel" tabindex="-1">0,5&nbsp;л</button>
+          <button type="button" class="format-tab" data-vol="1"   role="tab" id="pet-tab-1"   aria-selected="false" aria-controls="pet-panel" tabindex="-1">1&nbsp;л</button>
+          <button type="button" class="format-tab" data-vol="1.5" role="tab" id="pet-tab-15"  aria-selected="false" aria-controls="pet-panel" tabindex="-1">1,5&nbsp;л</button>
+          <button type="button" class="format-tab is-active" data-vol="2" role="tab" id="pet-tab-2" aria-selected="true" aria-controls="pet-panel" tabindex="0">2&nbsp;л</button>
         </div>
 
-        <div class="format-card__vis format-card__vis--pet">
+        <div class="format-card__vis format-card__vis--pet" role="tabpanel" id="pet-panel" aria-labelledby="pet-tab-2">
           <img class="pet-photo" data-vol="0.5" src="images/bottles/pet-05.png" alt="Кола от Мартина — ПЭТ 0,5 л" loading="lazy">
           <img class="pet-photo" data-vol="1" src="images/bottles/pet-1.png" alt="Кола от Мартина — ПЭТ 1 л" loading="lazy">
           <img class="pet-photo" data-vol="1.5" src="images/bottles/pet-15.png" alt="Кола от Мартина — ПЭТ 1,5 л" loading="lazy">

@@ -9,15 +9,19 @@
   --ink:          #1A1410;
   --ink-2:        #5C534A;
   /* Фирменные цвета бренда «Мартин» (брендбук): красный Pantone 200, золото Pantone 874 */
-  --bordeaux:     #BA0C2F;
-  --bordeaux-2:   #8C0A24;
-  --gold:         #8B6F4E;
-  --paper-warm:   #EFE9DA;
+  --bordeaux:        #BA0C2F;
+  --bordeaux-2:      #8C0A24;
+  /* Брайтер-вариант для тёмного фона — даёт контраст ≥ 4.5:1 (AA) */
+  --bordeaux-bright: #E8143A;
+  --gold:            #8B6F4E;
+  --paper-warm:      #EFE9DA;
 
   /* --serif: исторически Fraunces, теперь современный гротеск Onest */
-  --serif: "Onest", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --sans:  "Inter", "Söhne", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --serif:   "Onest", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --display: тот же Onest, но семантически — для крупных цифр и кнопок */
+  --display: "Onest", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:    "Inter", "Söhne", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --gut: clamp(20px, 4vw, 72px);
   --col: 12;
@@ -36,6 +40,8 @@
   --hairline:   #2E2820;
   --ink:        #F4F0E8;
   --ink-2:      #A89C88;
+  /* Перебиваем --bordeaux ярким вариантом — обычный #BA0C2F даёт контраст 2.76:1, не AA */
+  --bordeaux:   #E8143A;
 }
 
 * { box-sizing: border-box; }
@@ -1652,7 +1658,7 @@ p.long { color: var(--ink-2); }
   align-items: center;
   gap: 18px;
   padding: 18px 38px;
-  background: linear-gradient(135deg, #BA0C2F 0%, #8C0A24 100%);
+  background: var(--bordeaux);
   color: #fff;
   border: 0;
   font-family: var(--display);
@@ -1663,65 +1669,17 @@ p.long { color: var(--ink-2); }
   cursor: pointer;
   border-radius: 999px;
   position: relative;
-  overflow: hidden;
   transition:
-    transform .3s cubic-bezier(.22,1,.36,1),
-    box-shadow .3s cubic-bezier(.22,1,.36,1),
-    letter-spacing .35s cubic-bezier(.22,1,.36,1);
-  box-shadow:
-    0 10px 28px rgba(186,12,47,.30),
-    inset 0 1px 0 rgba(255,255,255,.22),
-    inset 0 -1px 0 rgba(0,0,0,.18);
-  isolation: isolate;
+    background-color .2s var(--ease),
+    transform .2s var(--ease);
 }
-/* Светлая bordeaux подложка — появляется при hover (поверх основного gradient) */
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #E11D43 0%, #BA0C2F 60%, #BA0C2F 100%);
-  opacity: 0;
-  transition: opacity .35s var(--ease);
-  z-index: -1;
-}
-/* Бегущий блик слева направо */
-.btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(110deg,
-    transparent 0%,
-    rgba(255,255,255,0) 30%,
-    rgba(255,255,255,.38) 50%,
-    rgba(255,255,255,0) 70%,
-    transparent 100%);
-  transform: skewX(-18deg);
-  pointer-events: none;
-  z-index: 0;
-  transition: left .75s cubic-bezier(.4,0,.2,1);
-}
-.btn > * { position: relative; z-index: 1; }
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 18px 44px rgba(225,29,67,.55),
-    0 0 0 5px rgba(186,12,47,.14),
-    inset 0 1px 0 rgba(255,255,255,.32),
-    inset 0 -1px 0 rgba(0,0,0,.22);
-  letter-spacing: .045em;
-}
-.btn:hover::before { opacity: 1; }
-.btn:hover::after { left: 130%; }
-.btn:active {
+  background: var(--bordeaux-2);
   transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
   transition-duration: .08s;
-  box-shadow:
-    0 6px 18px rgba(186,12,47,.4),
-    inset 0 1px 0 rgba(255,255,255,.22),
-    inset 0 -1px 0 rgba(0,0,0,.18);
 }
 .btn:focus-visible {
   outline: 2px solid #fff;

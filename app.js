@@ -573,7 +573,9 @@
     const palletEl = petCard.querySelector('#pet-pallet');
     const chanEl = petCard.querySelector('#pet-channel');
 
-    const setVol = (key) => {
+    const panel = petCard.querySelector('#pet-panel');
+
+    const setVol = (key, { focus = false } = {}) => {
       const v = data[key];
       if (!v) return;
       // Переключение фото через is-active (CSS делает crossfade)
@@ -590,16 +592,36 @@
         chanEl.textContent = v.channel;
         petCard.classList.remove('is-swapping');
       }, 230);
-      // Активный таб
+      // Активный таб + roving tabindex
+      let activeId = null;
       tabs.forEach(t => {
         const active = t.getAttribute('data-vol') === key;
         t.classList.toggle('is-active', active);
         t.setAttribute('aria-selected', String(active));
+        t.setAttribute('tabindex', active ? '0' : '-1');
+        if (active) activeId = t.id;
       });
+      if (panel && activeId) panel.setAttribute('aria-labelledby', activeId);
+      if (focus) {
+        const next = Array.from(tabs).find(t => t.getAttribute('data-vol') === key);
+        if (next) next.focus();
+      }
     };
 
-    tabs.forEach(tab => {
+    const tabsArr = Array.from(tabs);
+    tabsArr.forEach((tab, idx) => {
       tab.addEventListener('click', () => setVol(tab.getAttribute('data-vol')));
+      // Клавиатурная навигация: ←/→/Home/End — WAI-ARIA tablist
+      tab.addEventListener('keydown', (e) => {
+        let nextIdx = null;
+        if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabsArr.length;
+        else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabsArr.length) % tabsArr.length;
+        else if (e.key === 'Home') nextIdx = 0;
+        else if (e.key === 'End') nextIdx = tabsArr.length - 1;
+        if (nextIdx === null) return;
+        e.preventDefault();
+        setVol(tabsArr[nextIdx].getAttribute('data-vol'), { focus: true });
+      });
     });
 
     setVol('2');
