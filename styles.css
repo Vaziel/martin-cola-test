@@ -449,14 +449,15 @@ p.long { color: var(--ink-2); }
   .hero__medal { right: 2.5vw; width: clamp(160px, 20vw, 220px); }
   .hero__medal-cap { font-size: 9px; max-width: 200px; }
 }
-@media (max-width: 760px) {
+@media (max-width: 800px) {
   .hero__medal {
     position: static;
     transform: none;
-    width: 160px;
-    margin: 24px auto 0;
+    width: clamp(140px, 38vw, 200px);
+    margin: 24px auto 32px;
+    order: 3;
   }
-  .hero__medal-cap { font-size: 9px; }
+  .hero__medal-cap { font-size: 11px; max-width: 240px; }
   @keyframes medal-float { 0%,100% { transform: translateY(0); } }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -546,11 +547,62 @@ p.long { color: var(--ink-2); }
 }
 
 @media (max-width: 800px) {
-  .hero__copy { grid-template-columns: 1fr; gap: 36px; }
-  .hero__meta { text-align: left; }
-  .hero__meta .row { justify-content: flex-start; }
+  /* Hero на mobile: column-stack — текст → бутылка → медаль */
+  .hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 90px; /* высота шапки */
+  }
+  .hero__media {
+    position: relative;
+    inset: auto;
+    height: 50vh;
+    min-height: 380px;
+    order: 2;
+    overflow: hidden;
+  }
+  .hero__media .stage,
+  .hero__media .floor,
+  .hero__media .grain {
+    position: absolute;
+    inset: 0;
+  }
+  .bottle {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: clamp(180px, 55vw, 280px);
+    height: 100%;
+    opacity: 1;
+  }
+  .hero__copy {
+    position: relative;
+    z-index: 4;
+    display: block;
+    padding: 0 var(--gut) 32px;
+    order: 1;
+  }
+  .hero__copy .left { max-width: 100%; }
+  .hero__meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(244,240,232,.12);
+  }
+  .hero__meta .row {
+    display: grid;
+    grid-template-columns: 11ch 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    border: 0;
+  }
   .hero__corner-tr { display: none; }
-  .bottle { left: 70%; opacity: .55; }
+  .hero__scrollcue { display: none; }
 }
 
 /* =========================================================================
