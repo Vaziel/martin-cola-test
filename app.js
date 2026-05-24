@@ -333,9 +333,15 @@
   const wellRise = document.getElementById('wellRiseRect');
   const wellLabel = document.querySelector('#wellLabel');
   if (wellDrop && wellRise) {
-    const wtl = gsap.timeline({
-      scrollTrigger: { trigger: '.well__grid', start: 'top 62%', end: 'bottom bottom', scrub: 1 }
-    });
+    // На мобильном пинуем диаграмму: пока бутылка наполняется — секция стоит,
+    // потом отпускает и текст идёт снизу.
+    // На мобильном анимация скрабится по высоте wrap (140svh) — пока диаграмма
+    // sticky-пинится. На десктопе — по высоте всего грида как было.
+    const isMobileWell = window.matchMedia('(max-width: 900px)').matches;
+    const stCfg = isMobileWell
+      ? { trigger: '.well__diagram-wrap', start: 'top 80px', end: 'bottom top+=80', scrub: 1 }
+      : { trigger: '.well__grid', start: 'top 62%', end: 'bottom bottom', scrub: 1 };
+    const wtl = gsap.timeline({ scrollTrigger: stCfg });
     wtl
       .fromTo(wellDrop, { opacity: 0, scale: 0 },
         { opacity: 1, scale: 1, duration: 0.5, transformOrigin: '0px 0px' }, 0)

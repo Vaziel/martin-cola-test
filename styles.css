@@ -943,6 +943,9 @@ p.long { color: var(--ink-2); }
   gap: clamp(48px, 7vw, 120px);
   align-items: start;
 }
+/* На десктопе wrap прозрачный — диаграмма остаётся прямым грид-айтемом .well__grid,
+   sticky работает как раньше */
+.well__diagram-wrap { display: contents; }
 .well__diagram {
   position: sticky;
   top: 100px;
@@ -1036,13 +1039,21 @@ p.long { color: var(--ink-2); }
      SVG в .well__diagram имеет intrinsic ~450px и раздувал колонку → текст h2 тоже растягивался.
      min-width: 0 разрешает сжатие до 1fr-трека. */
   .well__grid > * { min-width: 0; }
-  /* Диаграмма sticky и компактнее — чтобы scroll-анимация (капля + бутылка) играла,
-     пока пользователь читает текст ниже */
+  /* Обёртка задаёт скролл-бюджет ~140svh — диаграмма sticky внутри.
+     Пока wrap проходит через viewport, диаграмма пинится у верха.
+     Когда wrap кончается → диаграмма отпускается и текст начинает скроллиться нормально. */
+  .well__diagram-wrap {
+    display: block;
+    height: 140svh;
+    margin-bottom: 48px;
+  }
   .well__diagram {
     position: sticky;
     top: 80px;
-    height: 54vh;
-    max-height: 480px;
+    height: calc(100svh - 100px);
+    max-height: 720px;
+    z-index: 2;
+    background: var(--paper-warm);
   }
   .well__diagram svg { max-width: 100%; height: auto; }
   /* «240м» и «Глубина скважины…» — в столбик, текст под цифрой */
