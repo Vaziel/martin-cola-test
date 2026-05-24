@@ -1025,7 +1025,12 @@ p.long { color: var(--ink-2); }
 
 @media (max-width: 900px) {
   .well__grid { grid-template-columns: 1fr; }
+  /* Grid items по умолчанию min-width: auto и не сжимаются меньше min-content;
+     SVG в .well__diagram имеет intrinsic ~450px и раздувал колонку → текст h2 тоже растягивался.
+     min-width: 0 разрешает сжатие до 1fr-трека. */
+  .well__grid > * { min-width: 0; }
   .well__diagram { position: relative; top: 0; height: 76vh; max-height: 620px; }
+  .well__diagram svg { max-width: 100%; height: auto; }
   .well__passport-grid { grid-template-columns: 1fr; }
 }
 
