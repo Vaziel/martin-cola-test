@@ -102,6 +102,83 @@ a { color: inherit; text-decoration: none; }
 }
 .skip-link:focus { transform: translateY(0); }
 
+/* Consent checkbox в формах */
+.form__consent { margin: 8px 0 6px; }
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.consent input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  flex: 0 0 18px;
+  border: 1.5px solid var(--ink-2);
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: border-color .2s ease, background .2s ease;
+}
+.consent input[type="checkbox"]:checked {
+  background: var(--bordeaux);
+  border-color: var(--bordeaux);
+}
+.consent input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px; top: 0;
+  width: 6px; height: 11px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+}
+.consent input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: 2px;
+}
+.consent input[type="checkbox"]:invalid {
+  border-color: rgba(186,12,47,.6);
+}
+.consent a {
+  color: var(--bordeaux);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(186,12,47,.4);
+}
+.consent a:hover { border-bottom-color: var(--bordeaux); }
+
+/* Form success state */
+.form.form--sent { position: relative; opacity: 0.5; pointer-events: none; }
+.form-success {
+  margin-top: 24px;
+  padding: 24px 28px;
+  background: rgba(186,12,47,.08);
+  border: 1px solid var(--bordeaux);
+  border-left-width: 3px;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.form-success strong { color: var(--bordeaux); display: block; margin-bottom: 6px; font-weight: 500; }
+.form-error {
+  margin-top: 24px;
+  padding: 16px 22px;
+  background: rgba(186,12,47,.08);
+  border: 1px solid rgba(186,12,47,.5);
+  color: var(--bordeaux);
+  font-size: 14px;
+}
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 12px;

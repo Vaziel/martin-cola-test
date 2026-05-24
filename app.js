@@ -61,16 +61,64 @@
     tick();
   })();
 
-  /* ---------- Forms: prevent submit + visual feedback ---------- */
+  /* ---------- Forms: AJAX submit to send.php ---------- */
   document.querySelectorAll('form.form').forEach(form => {
-    form.addEventListener('submit', (e) => {
+    // Если у формы нет action (главная страница пока без send.php) — оставляем fallback visual feedback
+    if (!form.action || form.action.endsWith('#')) return;
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('.btn');
-      if (!btn) return;
-      const original = btn.innerHTML;
-      btn.innerHTML = 'Заявка получена &nbsp;✓';
-      btn.style.background = 'var(--bordeaux)';
-      setTimeout(() => { btn.innerHTML = original; btn.style.background = ''; form.reset(); }, 2400);
+      const consent = form.querySelector('input[name="consent"]');
+      if (consent && !consent.checked) {
+        consent.focus();
+        return;
+      }
+
+      // Удалим предыдущие сообщения
+      form.querySelectorAll('.form-success, .form-error').forEach(el => el.remove());
+
+      const originalLabel = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = 'Отправка…';
+      }
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
+        });
+        let data = {};
+        try { data = await res.json(); } catch (_) { /* not json */ }
+
+        if (res.ok && data.ok) {
+          form.classList.add('form--sent');
+          const success = document.createElement('div');
+          success.className = 'form-success';
+          success.setAttribute('role', 'status');
+          success.setAttribute('aria-live', 'polite');
+          success.innerHTML = '<strong>Заявка получена ✓</strong>' +
+            (data.message ? '<span>' + data.message + '</span>' : 'Менеджер свяжется в&nbsp;течение рабочего дня.');
+          form.appendChild(success);
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Ошибка отправки');
+        }
+      } catch (err) {
+        const error = document.createElement('div');
+        error.className = 'form-error';
+        error.setAttribute('role', 'alert');
+        error.textContent = err.message || 'Ошибка сети. Напишите на profopt2013@mail.ru';
+        form.appendChild(error);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalLabel;
+        }
+      }
     });
   });
 

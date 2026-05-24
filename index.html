@@ -1022,18 +1022,20 @@
           <li><span class="b">04</span><span>Отгрузка со&nbsp;склада на&nbsp;м.&nbsp;«Рязанский проспект»</span></li>
         </ul>
 
-        <form class="form" autocomplete="off" novalidate>
+        <form class="form" action="send.php" method="post" data-form="distribution">
+          <input type="hidden" name="form_source" value="Опт и партнёрам">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
           <div class="field">
             <label for="d-name">Компания</label>
-            <input id="d-name" type="text" placeholder="ООО / ИП">
+            <input id="d-name" name="company" type="text" placeholder="ООО / ИП" required>
           </div>
           <div class="field">
             <label for="d-region">Город / округ</label>
-            <input id="d-region" type="text" placeholder="Москва, ЦАО">
+            <input id="d-region" name="city" type="text" placeholder="Москва, ЦАО">
           </div>
           <div class="field">
             <label for="d-volume">Прогноз объёма</label>
-            <select id="d-volume">
+            <select id="d-volume" name="volume">
               <option>до 5 паллет / мес</option>
               <option>5–20 паллет / мес</option>
               <option>20–50 паллет / мес</option>
@@ -1042,7 +1044,13 @@
           </div>
           <div class="field">
             <label for="d-contact">Контакт</label>
-            <input id="d-contact" type="text" placeholder="+7 · телефон или email">
+            <input id="d-contact" name="contact" type="text" placeholder="+7 · телефон или email" required>
+          </div>
+          <div class="field wide form__consent">
+            <label class="consent">
+              <input type="checkbox" name="consent" value="yes" required>
+              <span>Согласен на&nbsp;<a href="/privacy.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
+            </label>
           </div>
           <div class="form__submit">
             <button class="btn" type="submit">Отправить заявку <span class="arr" aria-hidden="true"></span></button>
@@ -1082,22 +1090,24 @@
         </div>
       </div>
 
-      <form class="form contact__form reveal" autocomplete="off" novalidate>
+      <form class="form contact__form reveal" action="send.php" method="post" data-form="contact">
+        <input type="hidden" name="form_source" value="Контакты">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
         <div class="field wide">
           <label for="c-name">Имя</label>
-          <input id="c-name" type="text" placeholder="Как к вам обращаться">
+          <input id="c-name" name="name" type="text" placeholder="Как к вам обращаться" required>
         </div>
         <div class="field">
           <label for="c-company">Компания</label>
-          <input id="c-company" type="text" placeholder="ООО / ИП / название">
+          <input id="c-company" name="company" type="text" placeholder="ООО / ИП / название">
         </div>
         <div class="field">
           <label for="c-contact">Телефон или email</label>
-          <input id="c-contact" type="text" placeholder="+7 · телефон или email">
+          <input id="c-contact" name="contact" type="text" placeholder="+7 · телефон или email" required>
         </div>
         <div class="field">
           <label for="c-interest">Интересует</label>
-          <select id="c-interest">
+          <select id="c-interest" name="interest">
             <option>Опт — HoReCa</option>
             <option>Опт — розница / сети</option>
             <option>Самовывоз со склада</option>
@@ -1107,14 +1117,19 @@
         </div>
         <div class="field">
           <label for="c-city">Город / округ</label>
-          <input id="c-city" type="text" placeholder="Москва">
+          <input id="c-city" name="city" type="text" placeholder="Москва">
         </div>
         <div class="field wide">
           <label for="c-msg">Сообщение</label>
-          <textarea id="c-msg" rows="3" placeholder="Объём, форматы, вопросы"></textarea>
+          <textarea id="c-msg" name="message" rows="3" placeholder="Объём, форматы, вопросы"></textarea>
+        </div>
+        <div class="field wide form__consent">
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required>
+            <span>Согласен на&nbsp;<a href="/privacy.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
+          </label>
         </div>
         <div class="form__submit">
-          <span class="contact__note">Нажимая кнопку, вы&nbsp;соглашаетесь на&nbsp;обработку данных.</span>
           <button class="btn" type="submit">Отправить заявку <span class="arr" aria-hidden="true"></span></button>
         </div>
       </form>
@@ -1197,7 +1212,7 @@
     <div class="footer__legal">
       <div>© 2026 · MARTIN-MSK · официальный дистрибьютор</div>
       <div class="center">«Кола от&nbsp;Мартина» · производство — Электроугли, МО</div>
-      <div class="right"><a href="#" class="footer__policy">Политика конфиденциальности</a></div>
+      <div class="right"><a href="/privacy.html" class="footer__policy">Политика конфиденциальности</a></div>
     </div>
   </div>
 </footer>
