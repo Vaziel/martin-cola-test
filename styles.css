@@ -1039,12 +1039,12 @@ p.long { color: var(--ink-2); }
      SVG в .well__diagram имеет intrinsic ~450px и раздувал колонку → текст h2 тоже растягивался.
      min-width: 0 разрешает сжатие до 1fr-трека. */
   .well__grid > * { min-width: 0; }
-  /* Обёртка задаёт скролл-бюджет ~140svh — диаграмма sticky внутри.
+  /* Обёртка задаёт скролл-бюджет ~220svh — диаграмма sticky внутри.
      Пока wrap проходит через viewport, диаграмма пинится у верха.
      Когда wrap кончается → диаграмма отпускается и текст начинает скроллиться нормально. */
   .well__diagram-wrap {
     display: block;
-    height: 140svh;
+    height: 220svh;
     margin-bottom: 48px;
   }
   .well__diagram {
