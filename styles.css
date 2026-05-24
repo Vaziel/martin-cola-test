@@ -1176,6 +1176,14 @@ p.long { color: var(--ink-2); }
   .process__caption { grid-template-columns: 1fr; gap: 12px; }
   /* Чтобы текст не наезжал на photo при коротких viewport'ах */
   .process__step { min-height: auto; padding: 32px 0; }
+  /* SVG-лейблы (вход/выход/корпус/мкм и т.д.) — крупнее и контрастнее на мобильном.
+     Размер в user-units; при viewBox 400×300 и контейнере ~335px эффективный
+     экранный размер ≈ font-size × 0.84. */
+  .proc-svg .px-label {
+    font-size: 13px;
+    fill: rgba(244,240,232,.85);
+  }
+  .proc-svg .px-label-accent { fill: var(--bordeaux); }
 }
 
 /* =========================================================================
