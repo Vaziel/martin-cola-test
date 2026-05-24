@@ -1801,7 +1801,7 @@ p.long { color: var(--ink-2); }
 .format-tab.is-active {
   background: var(--bordeaux);
   border-color: var(--bordeaux);
-  color: var(--paper);
+  color: #fff;
 }
 .format-tab:focus-visible {
   outline: 2px solid var(--bordeaux);
