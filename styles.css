@@ -76,6 +76,32 @@ a { color: inherit; text-decoration: none; }
 .serif { font-family: var(--serif); }
 .mono  { font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; }
 
+/* Visually hidden, доступно для AT и поисковиков (WCAG/SEO) */
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  left: 0; top: 0;
+  transform: translateY(-150%);
+  background: var(--bordeaux);
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-family: var(--mono);
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 12px;

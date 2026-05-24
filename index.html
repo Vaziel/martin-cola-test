@@ -4,7 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Кола от Мартина — оптовые поставки в Москве и области · MARTIN-MSK</title>
-<meta name="description" content="MARTIN-MSK — официальный дистрибьютор «Колы от Мартина» в Москве и Московской области. Крафтовая кола на артезианской воде. Опт от одной паллеты, самовывоз и доставка.">
+<meta name="description" content="MARTIN-MSK — официальный дистрибьютор «Колы от Мартина». Крафтовая кола на артезианской воде. Опт от 1 паллеты, самовывоз и доставка по Москве и МО.">
+
+<link rel="canonical" href="https://cola.martin-msk.ru/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://cola.martin-msk.ru/">
+<meta property="og:site_name" content="MARTIN-MSK">
+<meta property="og:title" content="Кола от Мартина — оптовые поставки в Москве · MARTIN-MSK">
+<meta property="og:description" content="Официальный дистрибьютор. Крафтовая кола на артезианской воде. Опт от 1 паллеты, доставка по Москве и МО.">
+<meta property="og:image" content="https://cola.martin-msk.ru/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Кола от Мартина — крафтовая кола, оптовые поставки MARTIN-MSK">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Кола от Мартина — оптовые поставки · MARTIN-MSK">
+<meta name="twitter:description" content="Крафтовая кола на артезианской воде. Опт от 1 паллеты по Москве и МО.">
+<meta name="twitter:image" content="https://cola.martin-msk.ru/images/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +39,14 @@
 </head>
 <body>
 
+<a class="skip-link" href="#top">Перейти к содержимому</a>
+
 <!-- ========================================================== -->
 <!-- HEADER                                                       -->
 <!-- ========================================================== -->
 <header class="header" id="header" data-screen-label="00 Header">
   <a href="#top" class="brand" aria-label="MARTIN-MSK — официальный дистрибьютор">
-    <img class="brand-logo" src="images/logo.jpg" alt="MARTIN-MSK">
+    <img class="brand-logo" src="images/logo.jpg" alt="MARTIN-MSK — официальный дистрибьютор Колы от Мартина" width="240" height="240" fetchpriority="high">
     <span class="brand-sub">официальный дистрибьютор</span>
   </a>
   <nav class="nav" aria-label="Основная навигация">
@@ -47,7 +73,9 @@
     <div class="bottle">
       <model-viewer
         src="assets/cola.glb"
-        alt="3D-модель бутылки «Кола от Мартина»"
+        poster="images/bottles/glass-033.png"
+        alt="Бутылка «Кола от Мартина классическая» 0,33 л — крафтовая кола на артезианской воде, перетащите для поворота"
+        aria-label="3D-модель бутылки Кола от Мартина — перетащите для поворота"
         camera-controls
         disable-zoom
         disable-pan
@@ -62,7 +90,9 @@
         max-camera-orbit="auto 100deg auto"
         field-of-view="26deg"
         loading="eager"
-      ></model-viewer>
+      >
+        <img slot="poster" src="images/bottles/glass-033.png" alt="Кола от Мартина классическая — крафтовая кола на артезианской воде, стеклянная бутылка 0,33 л">
+      </model-viewer>
     </div>
     <div class="grain"></div>
   </div>
@@ -109,7 +139,8 @@
 <!-- ========================================================== -->
 <!-- 2. HERITAGE                                                  -->
 <!-- ========================================================== -->
-<section class="section heritage" id="heritage" data-theme="dark" data-screen-label="02 Heritage">
+<section class="section heritage" id="heritage" data-theme="dark" data-screen-label="02 Heritage" aria-labelledby="heritage-heading">
+  <h2 id="heritage-heading" class="sr-only">Наследие бренда — 25 лет производства, Гран-при Продэкспо 2025</h2>
   <div class="heritage__pin">
 
     <div class="heritage__head">
@@ -915,7 +946,9 @@
 <!-- ========================================================== -->
 <!-- 7. PRESS                                                     -->
 <!-- ========================================================== -->
-<section class="press" id="press" data-theme="dark" data-screen-label="07 Press">
+<section class="press" id="press" data-theme="dark" data-screen-label="07 Press" aria-labelledby="press-heading">
+
+  <h2 id="press-heading" class="sr-only">Публикации в прессе — Life.ru, Overclockers.ru, Gazeta.press, ActualNews</h2>
 
   <div class="press__eyebrow">
     <span class="line" aria-hidden="true"></span>
@@ -1174,6 +1207,95 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="app.js"></script>
+
+<!-- Structured data: Organization + LocalBusiness + Products -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness", "WholesaleStore"],
+      "@id": "https://cola.martin-msk.ru/#org",
+      "name": "MARTIN-MSK",
+      "alternateName": "Мартин-МСК",
+      "description": "Официальный дистрибьютор «Колы от Мартина» в Москве и Московской области. Оптовые поставки крафтовой колы на артезианской воде от 1 паллеты, самовывоз и доставка.",
+      "url": "https://cola.martin-msk.ru/",
+      "logo": "https://cola.martin-msk.ru/images/logo.jpg",
+      "image": "https://cola.martin-msk.ru/images/og-image.jpg",
+      "telephone": "+79150233333",
+      "email": "profopt2013@mail.ru",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressRegion": "Москва",
+        "addressCountry": "RU",
+        "streetAddress": "м. Рязанский проспект"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Москва" },
+        { "@type": "AdministrativeArea", "name": "Московская область" }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://t.me/+79150233333",
+        "https://max.ru/+79150233333"
+      ],
+      "knowsAbout": [
+        "Оптовые поставки безалкогольных напитков",
+        "Крафтовая кола",
+        "Артезианская вода"
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "Кола от Мартина классическая — стекло 0,33 л",
+      "brand": { "@type": "Brand", "name": "Кола от Мартина" },
+      "manufacturer": { "@type": "Organization", "name": "ООО «МАРТИН»", "address": "Электроугли, Московская область, Россия" },
+      "description": "Крафтовая кола на артезианской воде Белоглинского месторождения. HoReCa-формат — стекло 0,33 л, кронен-пробка. Гран-при Продэкспо 2025.",
+      "image": "https://cola.martin-msk.ru/images/bottles/glass-033.png",
+      "category": "Безалкогольные напитки / Кола",
+      "award": "Гран-при Продэкспо 2025",
+      "offers": {
+        "@type": "Offer",
+        "seller": { "@id": "https://cola.martin-msk.ru/#org" },
+        "areaServed": "RU",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "RUB",
+        "businessFunction": "https://purl.org/goodrelations/v1#Sell"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Кола от Мартина классическая — ПЭТ 0,5 / 1 / 1,5 / 2 л",
+      "brand": { "@type": "Brand", "name": "Кола от Мартина" },
+      "manufacturer": { "@type": "Organization", "name": "ООО «МАРТИН»", "address": "Электроугли, Московская область, Россия" },
+      "description": "Крафтовая кола на артезианской воде. ПЭТ-форматы 0,5 / 1 / 1,5 / 2 л — для розницы и оптовых баз.",
+      "image": "https://cola.martin-msk.ru/images/bottles/pet-1.png",
+      "category": "Безалкогольные напитки / Кола",
+      "offers": {
+        "@type": "AggregateOffer",
+        "seller": { "@id": "https://cola.martin-msk.ru/#org" },
+        "areaServed": "RU",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "RUB",
+        "offerCount": "4"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://cola.martin-msk.ru/",
+      "name": "MARTIN-MSK",
+      "inLanguage": "ru-RU",
+      "publisher": { "@id": "https://cola.martin-msk.ru/#org" }
+    }
+  ]
+}
+</script>
 
 </body>
 </html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://cola.martin-msk.ru/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/bottles/glass-033.png</image:loc>
+      <image:caption>Кола от Мартина классическая — стекло 0,33 л</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/bottles/pet-05.png</image:loc>
+      <image:caption>Кола от Мартина — ПЭТ 0,5 л</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/bottles/pet-1.png</image:loc>
+      <image:caption>Кола от Мартина — ПЭТ 1 л</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/bottles/pet-15.png</image:loc>
+      <image:caption>Кола от Мартина — ПЭТ 1,5 л</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/bottles/pet-2.png</image:loc>
+      <image:caption>Кола от Мартина — ПЭТ 2 л</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://cola.martin-msk.ru/images/medal-prodexpo-2025.jpg</image:loc>
+      <image:caption>Гран-при Продэкспо 2025 — Кола от Мартина классическая</image:caption>
+    </image:image>
+  </url>
+</urlset>
