@@ -216,6 +216,13 @@ p.long { color: var(--ink-2); }
   font-size: 19px;
   letter-spacing: -.01em;
 }
+.brand-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.5));
+}
+@media (max-width: 760px) { .brand-logo { height: 44px; } }
 .brand .mark {
   width: 28px; height: 28px;
   border-radius: 50%;
@@ -1540,8 +1547,8 @@ p.long { color: var(--ink-2); }
   display: inline-flex;
   align-items: center;
   gap: 18px;
-  padding: 18px 36px;
-  background: var(--bordeaux);
+  padding: 18px 38px;
+  background: linear-gradient(135deg, #BA0C2F 0%, #8C0A24 100%);
   color: #fff;
   border: 0;
   font-family: var(--display);
@@ -1554,36 +1561,63 @@ p.long { color: var(--ink-2); }
   position: relative;
   overflow: hidden;
   transition:
-    background .35s cubic-bezier(.22,1,.36,1),
-    transform .25s cubic-bezier(.22,1,.36,1),
-    box-shadow .35s cubic-bezier(.22,1,.36,1),
+    transform .3s cubic-bezier(.22,1,.36,1),
+    box-shadow .3s cubic-bezier(.22,1,.36,1),
     letter-spacing .35s cubic-bezier(.22,1,.36,1);
   box-shadow:
-    0 8px 24px rgba(186,12,47,.22),
-    inset 0 1px 0 rgba(255,255,255,.18);
+    0 10px 28px rgba(186,12,47,.30),
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(0,0,0,.18);
+  isolation: isolate;
 }
+/* Светлая bordeaux подложка — появляется при hover (поверх основного gradient) */
 .btn::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 50%);
+  background: linear-gradient(135deg, #E11D43 0%, #BA0C2F 60%, #BA0C2F 100%);
   opacity: 0;
   transition: opacity .35s var(--ease);
-  pointer-events: none;
+  z-index: -1;
 }
+/* Бегущий блик слева направо */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(110deg,
+    transparent 0%,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,.38) 50%,
+    rgba(255,255,255,0) 70%,
+    transparent 100%);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  z-index: 0;
+  transition: left .75s cubic-bezier(.4,0,.2,1);
+}
+.btn > * { position: relative; z-index: 1; }
 .btn:hover {
-  background: var(--bordeaux-2);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow:
-    0 14px 36px rgba(186,12,47,.4),
-    0 0 0 4px rgba(186,12,47,.12),
-    inset 0 1px 0 rgba(255,255,255,.24);
-  letter-spacing: .04em;
+    0 18px 44px rgba(225,29,67,.55),
+    0 0 0 5px rgba(186,12,47,.14),
+    inset 0 1px 0 rgba(255,255,255,.32),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+  letter-spacing: .045em;
 }
 .btn:hover::before { opacity: 1; }
+.btn:hover::after { left: 130%; }
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
   transition-duration: .08s;
+  box-shadow:
+    0 6px 18px rgba(186,12,47,.4),
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(0,0,0,.18);
 }
 .btn:focus-visible {
   outline: 2px solid #fff;
@@ -1608,7 +1642,7 @@ p.long { color: var(--ink-2); }
   transform: translateY(-50%) rotate(45deg);
   transition: right .35s cubic-bezier(.22,1,.36,1);
 }
-.btn:hover .arr { width: 30px; }
+.btn:hover .arr { width: 32px; transform: translateX(4px); }
 .btn:hover .arr::after { right: -2px; }
 
 .pdf-link {
