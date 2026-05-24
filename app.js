@@ -126,7 +126,6 @@
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   heroTl
     .from('.bottle', { opacity: 0, scale: 0.9, duration: 1.5, ease: 'power2.out' }, 0)
-    .from('.hero__eyebrow', { y: 26, opacity: 0, duration: .8 }, 0.15)
     .from('.hero__head .l', { yPercent: 110, opacity: 0, duration: 1.05, stagger: 0.12 }, 0.25)
     .from('.hero__sub', { y: 26, opacity: 0, duration: .8 }, 0.7)
     .from('.hero__meta .row', { y: 18, opacity: 0, duration: .6, stagger: 0.1 }, 0.8)
