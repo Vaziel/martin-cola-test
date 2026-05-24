@@ -671,14 +671,16 @@ p.long { color: var(--ink-2); }
 .hstep__num {
   font-family: var(--serif);
   font-weight: 560;
-  font-size: clamp(130px, 25vw, 400px);
+  font-size: clamp(120px, 18vw, 320px);
   line-height: .78;
   letter-spacing: -.045em;
   color: var(--paper);
   justify-self: end;
   font-feature-settings: "lnum", "tnum";
   overflow: hidden;
+  max-width: 100%;
 }
+.hstep__num-i { white-space: nowrap; }
 .hstep__num-i {
   display: inline-block;
   will-change: transform;
