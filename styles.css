@@ -570,9 +570,9 @@ p.long { color: var(--ink-2); }
     position: static;
     transform: none;
     width: clamp(140px, 38vw, 200px);
-    /* margin-top: 0 чтобы медаль вплотную примыкала к bottle (без видимого разрыва),
-       bottle с overflow: visible выходит из media-контейнера естественно */
-    margin: 0 auto 32px;
+    /* margin-top отступает от низа bottle (bottle через overflow:visible
+       выходит за .hero__media на ~30-50px) — медаль не наезжает на бутылку */
+    margin: 64px auto 32px;
     order: 3;
   }
   /* Подпись под медалью — без декоративной линии слева, чтобы текст был
