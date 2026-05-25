@@ -570,7 +570,9 @@ p.long { color: var(--ink-2); }
     position: static;
     transform: none;
     width: clamp(140px, 38vw, 200px);
-    margin: 24px auto 32px;
+    /* margin-top: 0 чтобы медаль вплотную примыкала к bottle (без видимого разрыва),
+       bottle с overflow: visible выходит из media-контейнера естественно */
+    margin: 0 auto 32px;
     order: 3;
   }
   /* Подпись под медалью — без декоративной линии слева, чтобы текст был
@@ -684,7 +686,9 @@ p.long { color: var(--ink-2); }
     height: 50vh;
     min-height: 380px;
     order: 2;
-    overflow: hidden;
+    /* overflow: hidden убран — низ 3D-бутылки выходил за пределы контейнера
+       и обрезался, создавая видимую горизонтальную линию между bottle и medal */
+    overflow: visible;
   }
   .hero__media .stage,
   .hero__media .floor,
@@ -1064,6 +1068,10 @@ p.long { color: var(--ink-2); }
     background: var(--paper-warm);
   }
   .well__diagram svg { max-width: 100%; height: auto; }
+  /* На десктопе .well__copy имеет padding-bottom clamp(260, 48vh, 600) —
+     это компенсация под sticky-диаграмму. На мобильном sticky выполняется
+     отдельным .well__diagram-wrap, поэтому нижний отступ не нужен. */
+  .well__copy { padding-bottom: 0; }
   /* «240м» и «Глубина скважины…» — в столбик, текст под цифрой */
   .well__numwrap { grid-template-columns: 1fr; gap: 8px; }
   .well__num { font-size: clamp(120px, 38vw, 180px); }
