@@ -2166,7 +2166,7 @@ p.long { color: var(--ink-2); }
   transition: color .2s ease, border-color .2s ease;
 }
 .footer__credit-link:hover {
-  color: var(--paper);
+  color: #fff;
   border-bottom-color: rgba(244,240,232,.4);
 }
 

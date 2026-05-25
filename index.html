@@ -651,8 +651,8 @@
                 <!-- манометр -->
                 <circle class="px-stroke" cx="25" cy="0" r="6" stroke-width="0.9"/>
                 <line class="px-stroke-bordeaux" x1="25" y1="0" x2="29" y2="-3" stroke-width="1.2"/>
-                <!-- лейбл CO₂ -->
-                <text class="px-label px-label-accent" x="-2" y="80" font-size="12" letter-spacing=".15em">CO₂</text>
+                <!-- лейбл CO₂ — по центру баллона (cylinder cx=25 в g-координатах) -->
+                <text class="px-label px-label-accent" x="25" y="80" text-anchor="middle" font-size="12" letter-spacing=".15em">CO₂</text>
               </g>
 
               <!-- Трубка от CO₂ в сатуратор -->
@@ -660,10 +660,10 @@
               <path id="proc3-co2-flow" class="px-stroke" d="M 635 210 L 635 280 Q 635 320 580 320 L 460 320"
                     stroke-width="0.9" stroke-dasharray="3 7" stroke-dashoffset="0" opacity="0.55" fill="none"/>
 
-              <!-- Выход из сатуратора (готовый напиток) -->
-              <line class="px-stroke-bordeaux" x1="550" y1="260" x2="770" y2="260" stroke-width="1.8" opacity="0.85"/>
-              <text class="px-label px-label-accent" x="700" y="252">готовый купаж</text>
-              <text class="px-label" x="700" y="278">→ на розлив</text>
+              <!-- Выход из сатуратора (готовый напиток) — на мобильном правый край viewBox обрезается -->
+              <line class="px-stroke-bordeaux" x1="550" y1="260" x2="725" y2="260" stroke-width="1.8" opacity="0.85"/>
+              <text class="px-label px-label-accent" x="725" y="252" text-anchor="end">готовый купаж</text>
+              <text class="px-label" x="725" y="278" text-anchor="end">→ на розлив</text>
 
             </svg>
             <div class="ph-caption-tl">этап 03 · купаж + CO₂</div>
