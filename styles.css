@@ -1139,6 +1139,45 @@ p.long { color: var(--ink-2); }
   gap: 22px;
   min-height: 75vh;
   justify-content: center;
+  position: relative;
+}
+/* Анимированные соединительные линии между этапами 01→02→03→04 —
+   пустоту gap-а заполняет бордовый dashed-flow + узловые точки сверху/снизу */
+.process__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * clamp(140px, 20vh, 240px));
+  width: 1px;
+  height: clamp(140px, 20vh, 240px);
+  transform: translateX(-50%);
+  background-image: linear-gradient(180deg, var(--bordeaux) 50%, transparent 50%);
+  background-size: 1px 14px;
+  background-repeat: repeat-y;
+  opacity: .65;
+  animation: process-flow 1.6s linear infinite;
+  pointer-events: none;
+}
+/* Узловые точки на стыках — маленькие кружки бордового цвета */
+.process__step::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px rgba(186,12,47,.15);
+  pointer-events: none;
+}
+.process__step:first-child::before { display: none; }
+@keyframes process-flow {
+  to { background-position: 0 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .process__step::after { animation: none; }
 }
 .process__step .photo {
   aspect-ratio: 4 / 3;
