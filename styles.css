@@ -692,6 +692,14 @@ p.long { color: var(--ink-2); }
     position: absolute;
     inset: 0;
   }
+  /* Убираем декоративные градиенты/затемнения внутри hero__media на мобильном —
+     они создавали 4 видимые горизонтальные полосы (stage gradient + floor overlay
+     с разными тёмными оттенками поверх единого var(--ink) фона .hero). */
+  .hero__media .stage {
+    background: radial-gradient(ellipse 90% 60% at 50% 70%, rgba(186,12,47,.08), transparent 70%);
+  }
+  .hero__media .floor { display: none; }
+  .hero__media .grain { opacity: .03; }
   .bottle {
     position: absolute;
     left: 50%;
